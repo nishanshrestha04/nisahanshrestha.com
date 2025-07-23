@@ -79,12 +79,12 @@ export const myProjects = [
                 path: "/assets/logos/sci.svg",
             },
             {
-                id: 5,
+                id: 6,
                 name: "Jupyter Notebook",
                 path: "/assets/logos/jupyter.svg",
             },
             {
-                id: 6,
+                id: 7,
                 name: "Redis",
                 path: "/assets/logos/redis.svg",
             },
@@ -119,7 +119,7 @@ export const myProjects = [
         ],
     },
     {
-        id: 5,
+        id: 4,
         title: "PDF Reading Chatbot",
         description:
             "An intelligent chatbot built with LangChain that reads and understands PDF documents, enabling users to ask questions and receive accurate, context-aware answers directly from the document content.",

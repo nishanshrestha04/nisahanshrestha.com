@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import Project from "../components/Project";
 import { myProjects } from "../constants";
-import { motion, useMotionValue, useSpring } from "motion/react";
+
 const Projects = () => {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -12,6 +13,17 @@ const Projects = () => {
         y.set(e.clientY + 20);
     };
     const [preview, setPreview] = useState(null);
+    const [isDesktop, setIsDesktop] = useState(true);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsDesktop(window.innerWidth >= 640);
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <section
             id="projects"
@@ -27,7 +39,7 @@ const Projects = () => {
                     setPreview={setPreview}
                 />
             ))}
-            {preview && (
+            {preview && isDesktop && (
                 <motion.img
                     className="fixed top-0 left-0 z-50 object-cover h-56 rounded-lg shadow-lg pointer-events-none w-80"
                     src={preview}
